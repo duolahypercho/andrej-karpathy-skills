@@ -5,7 +5,7 @@ This repository is a Codex-native plugin package. Treat it as a reusable skill, 
 ## Source Of Truth
 
 - Plugin manifest: `.codex-plugin/plugin.json`
-- Skill behavior: `skills/surgical-coding-discipline/SKILL.md`
+- Skill behavior: `skills/change-budget/SKILL.md`
 - Usage examples: `EXAMPLES.md`
 - Public overview: `README.md`
 

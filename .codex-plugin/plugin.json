@@ -19,7 +19,7 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Surgical Coding Discipline",
+    "displayName": "Change Budget",
     "shortDescription": "Use a change budget and evidence ledger for safer Codex coding work.",
     "longDescription": "A Codex skill that gives agents a distinct change-budget protocol for implementation, debugging, refactoring, and review tasks, with explicit boundaries, non-goals, risks, and evidence.",
     "developerName": "Duola",

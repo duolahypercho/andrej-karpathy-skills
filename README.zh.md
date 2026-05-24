@@ -1,10 +1,10 @@
-# Codex 变更预算纪律
+# Codex Change Budget
 
 这是一个 Codex 原生 skill，用来让编码 Agent 在改代码前先明确边界、风险和证据。
 
 - `AGENTS.md` 是仓库级 Codex 操作上下文。
 - `.codex-plugin/plugin.json` 是插件清单。
-- `skills/surgical-coding-discipline/SKILL.md` 是可复用 skill。
+- `skills/change-budget/SKILL.md` 是可复用 skill。
 - `EXAMPLES.md` 是 Codex 风格示例。
 
 [English](./README.md) | 简体中文
@@ -36,7 +36,7 @@ Evidence:
 
 1. 将本仓库加入 Codex 插件源。
 2. Codex 读取 `.codex-plugin/plugin.json`。
-3. Codex 加载 `skills/surgical-coding-discipline/SKILL.md`。
+3. Codex 加载 `skills/change-budget/SKILL.md`。
 
 插件名：
 
@@ -47,7 +47,7 @@ andrej-karpathy-skills
 Skill 名：
 
 ```text
-surgical-coding-discipline
+change-budget
 ```
 
 ## 仓库结构
@@ -59,7 +59,7 @@ EXAMPLES.md
 LICENSE
 README.md
 README.zh.md
-skills/surgical-coding-discipline/SKILL.md
+skills/change-budget/SKILL.md
 ```
 
 ## 授权

@@ -1,9 +1,9 @@
 ---
-name: surgical-coding-discipline
+name: change-budget
 description: Apply a Codex-specific change-budget workflow for implementation, debugging, refactoring, and review tasks. Use when Codex should translate a user request into scoped code changes, preserve local contracts, avoid speculative expansion, and report evidence for what changed.
 ---
 
-# Surgical Coding Discipline
+# Change Budget
 
 Treat every coding task as a controlled change with a budget, a boundary, and evidence.
 

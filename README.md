@@ -1,10 +1,10 @@
-# Surgical Coding Discipline for Codex
+# Change Budget for Codex
 
 A Codex-native skill package for giving coding agents a change budget, a boundary, and an evidence ledger.
 
 - `AGENTS.md` is the repository-level operating context.
 - `.codex-plugin/plugin.json` is the plugin manifest.
-- `skills/surgical-coding-discipline/SKILL.md` is the reusable skill.
+- `skills/change-budget/SKILL.md` is the reusable skill.
 - `EXAMPLES.md` shows original Codex-style scenarios.
 
 English | [Simplified Chinese](./README.zh.md)
@@ -42,7 +42,7 @@ Use this repository as a local Codex plugin source.
 
 1. Add the repository to your Codex plugin sources.
 2. Codex reads `.codex-plugin/plugin.json`.
-3. Codex loads `skills/surgical-coding-discipline/SKILL.md`.
+3. Codex loads `skills/change-budget/SKILL.md`.
 
 Plugin name:
 
@@ -53,7 +53,7 @@ andrej-karpathy-skills
 Skill name:
 
 ```text
-surgical-coding-discipline
+change-budget
 ```
 
 ## Repository Layout
@@ -65,7 +65,7 @@ EXAMPLES.md
 LICENSE
 README.md
 README.zh.md
-skills/surgical-coding-discipline/SKILL.md
+skills/change-budget/SKILL.md
 ```
 
 ## When To Use It

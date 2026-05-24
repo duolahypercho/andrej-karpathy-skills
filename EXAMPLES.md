@@ -1,6 +1,6 @@
 # Examples
 
-These examples show how the `surgical-coding-discipline` skill should change Codex behavior.
+These examples show how the `change-budget` skill should change Codex behavior.
 
 ## Example 1: Implementation Mode
 
