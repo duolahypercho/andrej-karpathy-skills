@@ -1,15 +1,15 @@
 ---
-name: change-budget
-description: Apply a Codex-specific change-budget workflow for implementation, debugging, refactoring, and review tasks. Use when Codex should translate a user request into scoped code changes, preserve local contracts, avoid speculative expansion, and report evidence for what changed.
+name: andrej-karpathy-skill
+description: Apply Andrej Karpathy-inspired coding-agent discipline in Codex for implementation, debugging, refactoring, and review tasks. Use when Codex should avoid hidden assumptions, speculative abstractions, unrelated edits, and unsupported confidence.
 ---
 
-# Change Budget
+# Andrej Karpathy Skill
 
 Treat every coding task as a controlled change with a budget, a boundary, and evidence.
 
 This skill is not a style guide. It is a decision protocol for keeping Codex from turning a narrow request into a wandering rewrite.
 
-## The Change Budget
+## The Working Ledger
 
 Before editing, establish a small working ledger:
 

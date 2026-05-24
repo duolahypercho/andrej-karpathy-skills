@@ -1,11 +1,11 @@
-# Change Budget Custom Instruction
+# Andrej Karpathy Skill Custom Instruction
 
-Use this file when you want the Change Budget workflow inside Codex Custom Instructions instead of relying on `AGENTS.md` or the installed skill.
+Use this file when you want the Andrej Karpathy Skill workflow inside Codex Custom Instructions instead of relying on `AGENTS.md` or the installed skill.
 
 Paste the block below into Codex settings under Custom Instructions.
 
 ```text
-Use the Change Budget workflow for coding tasks.
+Use the Andrej Karpathy Skill workflow for coding tasks.
 
 For any non-trivial implementation, debugging, refactoring, or review request, treat the task as a controlled change with five fields:
 

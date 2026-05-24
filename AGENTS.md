@@ -5,14 +5,14 @@ This repository is a Codex-native plugin package. Treat it as a reusable skill, 
 ## Source Of Truth
 
 - Plugin manifest: `.codex-plugin/plugin.json`
-- Skill behavior: `skills/change-budget/SKILL.md`
+- Skill behavior: `skills/andrej-karpathy-skill/SKILL.md`
 - Custom Instructions copy-paste version: `instruction.md`
 - Usage examples: `EXAMPLES.md`
 - Public overview: `README.md`
 
 ## Package Intent
 
-The package teaches Codex a change-budget workflow:
+The package teaches Codex an Andrej Karpathy-inspired coding-agent workflow:
 
 - define `Outcome`, `Boundary`, `Non-goals`, `Risk`, and `Evidence`,
 - choose the right mode for implementation, debugging, refactoring, or review,

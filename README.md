@@ -1,10 +1,10 @@
-# Change Budget for Codex
+# Andrej Karpathy Skill for Codex
 
-A Codex-native skill package for giving coding agents a change budget, a boundary, and an evidence ledger.
+A Codex-native skill package inspired by Andrej Karpathy's notes on coding-agent failure modes.
 
 - `AGENTS.md` is the repository-level operating context.
 - `.codex-plugin/plugin.json` is the plugin manifest.
-- `skills/change-budget/SKILL.md` is the reusable skill.
+- `skills/andrej-karpathy-skill/SKILL.md` is the reusable skill.
 - `instruction.md` is the copy-paste version for Codex Custom Instructions.
 - `EXAMPLES.md` shows original Codex-style scenarios.
 
@@ -43,7 +43,7 @@ Use this repository as a local Codex plugin source.
 
 1. Add the repository to your Codex plugin sources.
 2. Codex reads `.codex-plugin/plugin.json`.
-3. Codex loads `skills/change-budget/SKILL.md`.
+3. Codex loads `skills/andrej-karpathy-skill/SKILL.md`.
 
 Plugin name:
 
@@ -54,7 +54,7 @@ andrej-karpathy-skills
 Skill name:
 
 ```text
-change-budget
+andrej-karpathy-skill
 ```
 
 ## Use Without Installing
@@ -65,7 +65,7 @@ If someone does not want to install the plugin or add an `AGENTS.md`, they can u
 2. Copy the block under "Paste the block below".
 3. Paste it into Codex Settings -> Custom Instructions.
 
-That version is self-contained, so Codex can apply Change Budget immediately without reading any repo files.
+That version is self-contained, so Codex can apply the Andrej Karpathy Skill immediately without reading any repo files.
 
 ## Repository Layout
 
@@ -77,7 +77,7 @@ instruction.md
 LICENSE
 README.md
 README.zh.md
-skills/change-budget/SKILL.md
+skills/andrej-karpathy-skill/SKILL.md
 ```
 
 ## When To Use It

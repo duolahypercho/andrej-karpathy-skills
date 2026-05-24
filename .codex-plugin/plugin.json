@@ -1,7 +1,7 @@
 {
   "name": "andrej-karpathy-skills",
   "version": "1.0.0",
-  "description": "A Codex-native change-budget workflow for scoped edits, local-contract preservation, and evidence-backed coding work.",
+  "description": "A Codex-native Andrej Karpathy-inspired skill for scoped edits, local-contract preservation, and evidence-backed coding work.",
   "author": {
     "name": "Duola",
     "url": "https://github.com/duolahypercho"
@@ -19,9 +19,9 @@
   ],
   "skills": "./skills/",
   "interface": {
-    "displayName": "Change Budget",
-    "shortDescription": "Use a change budget and evidence ledger for safer Codex coding work.",
-    "longDescription": "A Codex skill that gives agents a distinct change-budget protocol for implementation, debugging, refactoring, and review tasks, with explicit boundaries, non-goals, risks, and evidence.",
+    "displayName": "Andrej Karpathy Skill",
+    "shortDescription": "Apply Karpathy-inspired coding-agent discipline inside Codex.",
+    "longDescription": "A Codex skill inspired by Andrej Karpathy's observations on coding agents, with a concrete workflow for implementation, debugging, refactoring, and review tasks.",
     "developerName": "Duola",
     "category": "Productivity",
     "capabilities": [
