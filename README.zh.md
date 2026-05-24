@@ -1,6 +1,6 @@
 # Codex Andrej Karpathy Skill
 
-这是一个 Codex 原生 skill，用来让编码 Agent 在改代码前先明确边界、风险和证据。
+这是一个 Codex 原生 skill，用来打包 Andrej Karpathy 启发的 coding-agent 指南。
 
 - `AGENTS.md` 是仓库级 Codex 操作上下文。
 - `.codex-plugin/plugin.json` 是插件清单。
@@ -10,26 +10,25 @@
 
 [English](./README.md) | 简体中文
 
-## 核心工作流
+## 为什么需要它
 
-每个非平凡任务都先形成一个轻量 ledger：
+Coding agent 常见失败方式很固定：
 
-```text
-Outcome:
-Boundary:
-Non-goals:
-Risk:
-Evidence:
-```
+- 做太多隐藏假设。
+- 把简单请求做复杂。
+- 修改无关代码。
+- 没有明确成功标准就说完成。
 
-然后按任务类型切换模式：
+这个仓库把 Karpathy 风格的四条原则整理成 Codex 可用的 skill、`AGENTS.md` 和 Custom Instructions。
 
-| 模式 | 用途 |
-|------|------|
-| Implementation | 添加行为，但不顺手发明框架。 |
-| Debugging | 围绕失败形状修复最近的契约。 |
-| Refactor | 改结构，同时保持行为不变。 |
-| Review | 用具体证据报告风险。 |
+## 四条原则
+
+| 原则 | Codex 行为 |
+|------|------------|
+| Think before coding | 先暴露假设、困惑、替代方案和权衡。 |
+| Keep it simple | 只解决当前请求，不添加推测性功能或抽象。 |
+| Make surgical changes | 只修改任务需要的代码，保留周围代码形状。 |
+| Define and verify the goal | 把请求变成可检查的结果，再说完成。 |
 
 ## 在 Codex 中安装
 
@@ -59,7 +58,7 @@ andrej-karpathy-skill
 2. 复制其中的 Custom Instructions 区块。
 3. 粘贴到 Codex Settings -> Custom Instructions。
 
-这个版本是自包含的，Codex 不需要额外读取仓库文件就能使用 Andrej Karpathy Skill 工作流。
+这个版本是自包含的，Codex 不需要额外读取仓库文件就能使用同样的行为。
 
 ## 仓库结构
 

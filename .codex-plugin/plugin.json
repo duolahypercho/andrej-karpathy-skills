@@ -1,7 +1,7 @@
 {
   "name": "andrej-karpathy-skills",
   "version": "1.0.0",
-  "description": "A Codex-native Andrej Karpathy-inspired skill for scoped edits, local-contract preservation, and evidence-backed coding work.",
+  "description": "A Codex-native packaging of Andrej Karpathy-inspired coding-agent guidelines: think first, keep it simple, change surgically, and verify the goal.",
   "author": {
     "name": "Duola",
     "url": "https://github.com/duolahypercho"
@@ -21,7 +21,7 @@
   "interface": {
     "displayName": "Andrej Karpathy Skill",
     "shortDescription": "Apply Karpathy-inspired coding-agent discipline inside Codex.",
-    "longDescription": "A Codex skill inspired by Andrej Karpathy's observations on coding agents, with a concrete workflow for implementation, debugging, refactoring, and review tasks.",
+    "longDescription": "A Codex skill inspired by Andrej Karpathy's observations on coding agents. It teaches Codex to surface assumptions, avoid overengineering, keep diffs surgical, and define verifiable success criteria.",
     "developerName": "Duola",
     "category": "Productivity",
     "capabilities": [
@@ -32,10 +32,10 @@
     "privacyPolicyURL": "https://github.com/duolahypercho/andrej-karpathy-skills/blob/main/LICENSE",
     "termsOfServiceURL": "https://github.com/duolahypercho/andrej-karpathy-skills/blob/main/LICENSE",
     "defaultPrompt": [
-      "Create a change budget for this coding request.",
-      "Use implementation mode for this feature.",
-      "Use debugging mode for this failure.",
-      "Review this patch with an evidence ledger."
+      "Apply the Andrej Karpathy coding guidelines to this task.",
+      "Think before coding and surface assumptions.",
+      "Simplify this implementation without widening scope.",
+      "Review this patch for unrelated edits and weak verification."
     ],
     "brandColor": "#0F766E"
   }

@@ -12,12 +12,12 @@ This repository is a Codex-native plugin package. Treat it as a reusable skill, 
 
 ## Package Intent
 
-The package teaches Codex an Andrej Karpathy-inspired coding-agent workflow:
+The package teaches Codex the four Karpathy-inspired coding-agent checks:
 
-- define `Outcome`, `Boundary`, `Non-goals`, `Risk`, and `Evidence`,
-- choose the right mode for implementation, debugging, refactoring, or review,
-- separate core work from optional expansion,
-- report only the evidence actually gathered.
+- think before coding,
+- keep implementations simple,
+- make surgical changes,
+- define the goal and verify it.
 
 ## Maintenance Rules
 
