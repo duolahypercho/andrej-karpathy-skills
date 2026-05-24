@@ -7,6 +7,9 @@ alwaysApply: true
 
 Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
+> Compatibility note: this file is for Cursor consumers.  
+> The Codex-native source is `skills/karpathy-guidelines/SKILL.md` and `.codex-plugin/plugin.json`.
+
 **Tradeoff:** These guidelines bias toward caution over speed. For trivial tasks, use judgment.
 
 ## 1. Think Before Coding
