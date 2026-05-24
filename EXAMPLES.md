@@ -2,6 +2,11 @@
 
 Real-world code examples demonstrating the four principles. Each example shows what LLMs commonly do wrong and how to fix it.
 
+These examples apply directly to the Codex skill behavior set in:
+
+- `.codex-plugin/plugin.json`
+- `skills/karpathy-guidelines/SKILL.md`
+
 ---
 
 ## 1. Think Before Coding

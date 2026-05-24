@@ -1,28 +1,26 @@
-# Using this repo with Cursor
+# Using this repo with Codex and Cursor
 
-This project includes a **Cursor project rule** so the Karpathy-inspired behavioral guidelines apply automatically when you work here.
+This repository is now organized as a Codex plugin-first package.
 
-## In this repository
+- Primary: `.codex-plugin/plugin.json`
+- Primary instructions: `skills/karpathy-guidelines/SKILL.md`
+- Optional compatibility: `CLAUDE.md`, `.cursor/rules/karpathy-guidelines.mdc`
+
+## Codex (primary)
+
+Use this repo directly as a Codex plugin source.
+
+1. Add the repo folder to your Codex plugin source path.
+2. Let Codex discover `.codex-plugin/plugin.json`.
+3. The skill name is `andrej-karpathy-skills` and the skill entry is `karpathy-guidelines`.
+
+## Cursor (optional)
 
 1. Open the folder in Cursor.
-2. The rule [`.cursor/rules/karpathy-guidelines.mdc`](.cursor/rules/karpathy-guidelines.mdc) is committed with `alwaysApply: true`, so you do not need extra installation steps.
-3. In Cursor, you can confirm it under **Settings → Rules** (or the project rules UI), where `karpathy-guidelines` should appear.
+2. The committed project rule `/.cursor/rules/karpathy-guidelines.mdc` is available with `alwaysApply: true`.
+3. In Cursor settings, confirm `karpathy-guidelines` appears under project rules.
 
-## Use the same guidelines in another project
+## Other tools
 
-**Cursor (recommended):** Copy `.cursor/rules/karpathy-guidelines.mdc` into that project’s `.cursor/rules/` directory (create the folders if needed). Adjust or merge with existing rules as you like.
-
-**Other tools:** If a stack only supports a root instruction file, copy [`CLAUDE.md`](CLAUDE.md) into that project instead (or merge its contents into your existing instructions).
-
-## Optional: personal Agent Skills
-
-If you want the same content as a reusable skill under `~/.cursor/skills`, use [`skills/karpathy-guidelines/SKILL.md`](skills/karpathy-guidelines/SKILL.md). You can copy or symlink it into your personal skills directory; use whatever layout you use for other skills.
-
-## Claude Code vs Cursor
-
-- **Claude Code:** Install via the plugin marketplace and [`README.md`](README.md) instructions; the plugin exposes the skill from this repo. Per-project use can also rely on `CLAUDE.md`.
-- **Cursor:** Use the committed `.cursor/rules/` file as described above. Cursor does not read `.claude-plugin/` or `CLAUDE.md` by default.
-
-## For contributors
-
-When you change the four principles, keep **[`CLAUDE.md`](CLAUDE.md)** and **[`.cursor/rules/karpathy-guidelines.mdc`](.cursor/rules/karpathy-guidelines.mdc)** in sync. If the published skill/plugin text should match, update **[`skills/karpathy-guidelines/SKILL.md`](skills/karpathy-guidelines/SKILL.md)** as well.
+- If a stack only supports a root instruction file, keep this guidance in `CLAUDE.md`.
+- If you copy rules elsewhere, keep `SKILL.md` as the source-of-truth for the four principles.

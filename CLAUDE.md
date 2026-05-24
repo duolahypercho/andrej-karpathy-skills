@@ -1,4 +1,7 @@
-# CLAUDE.md
+# CLAUDE.md (Legacy Compatibility)
+
+This repository is now a Codex-first skill package. `CLAUDE.md` is kept only
+for compatibility with older tooling.
 
 Behavioral guidelines to reduce common LLM coding mistakes. Merge with project-specific instructions as needed.
 
@@ -60,6 +63,8 @@ For multi-step tasks, state a brief plan:
 
 Strong success criteria let you loop independently. Weak criteria ("make it work") require constant clarification.
 
----
+## Codex note
 
-**These guidelines are working if:** fewer unnecessary changes in diffs, fewer rewrites due to overcomplication, and clarifying questions come before implementation rather than after mistakes.
+Primary entry for Codex is:
+- `.codex-plugin/plugin.json`
+- `skills/karpathy-guidelines/SKILL.md`

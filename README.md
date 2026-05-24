@@ -98,7 +98,24 @@ Strong success criteria let the LLM loop independently. Weak criteria ("make it 
 
 ## Install
 
-**Option A: Claude Code Plugin (recommended)**
+### Option A: Codex (recommended)
+
+This repository is now a full Codex plugin package. The plugin manifest is at:
+
+- `.codex-plugin/plugin.json`
+
+What Codex sees:
+
+- Plugin name: `andrej-karpathy-skills`
+- Skill entry: `skills/karpathy-guidelines`
+- Instruction source: `skills/karpathy-guidelines/SKILL.md`
+
+To use in Codex:
+
+1. Open Codex plugin manager and install from local source by adding this folder, or
+2. Use any existing local Codex plugin installation flow your environment already uses.
+
+### Option B: Legacy Claude Plugin
 
 From within Claude Code, first add the marketplace:
 ```
@@ -127,7 +144,7 @@ curl https://raw.githubusercontent.com/forrestchang/andrej-karpathy-skills/main/
 
 ## Using with Cursor
 
-This repository includes a committed Cursor project rule ([`.cursor/rules/karpathy-guidelines.mdc`](.cursor/rules/karpathy-guidelines.mdc)) so the same guidelines apply when you open the project in Cursor. See **[CURSOR.md](CURSOR.md)** for setup, using the rule in other projects, and how this relates to Claude Code.
+This repository includes a committed Cursor project rule ([`.cursor/rules/karpathy-guidelines.mdc`](.cursor/rules/karpathy-guidelines.mdc)) so the same guidelines apply when you open the project in Cursor. See **[CURSOR.md](CURSOR.md)** for setup.
 
 ## Key Insight
 
@@ -165,6 +182,11 @@ For project-specific rules, add sections like:
 These guidelines bias toward **caution over speed**. For trivial tasks (simple typo fixes, obvious one-liners), use judgment — not every change needs the full rigor.
 
 The goal is reducing costly mistakes on non-trivial work, not slowing down simple tasks.
+
+## Codex-first migration note
+
+If you are adapting this into another environment, keep this file as the source
+of truth and make `CLAUDE.md`/`CURSOR.md` compatibility notes only.
 
 ## License
 
