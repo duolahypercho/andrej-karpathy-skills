@@ -1,28 +1,65 @@
-# Andrej Karpathy 指导原则（Codex 版）
+# Karpathy 启发的 Codex Skill
 
-这是一个最小化行为规范仓库，来自 Andrej Karpathy 关于 LLM 编码误区的观察。  
-当前仓库已转换为 **Codex 插件包**。
+这是一个 Codex 原生技能包，来自 Andrej Karpathy 对 LLM 编码常见问题的观察。
 
-- 主入口：`.codex-plugin/plugin.json`
-- 技能入口：`skills/karpathy-guidelines/SKILL.md`
-- 兼容文件：`CLAUDE.md`、`CURSOR.md`
+本仓库使用：
 
-## 安装（Codex）
+- `.codex-plugin/plugin.json`：Codex 插件清单。
+- `AGENTS.md`：仓库级 Codex 操作上下文。
+- `skills/karpathy-guidelines/SKILL.md`：可复用技能说明。
+- `EXAMPLES.md`：四个原则的实践示例。
 
-1. 将仓库加入本地 Codex 插件源。
-2. Codex 会从 `.codex-plugin/plugin.json` 读取插件元数据。
-3. 插件名：`andrej-karpathy-skills`，技能条目：`karpathy-guidelines`。
+[English](./README.md) | 简体中文
 
-## 示例与规则
+## 解决的问题
 
-- 规则文档：[`skills/karpathy-guidelines/SKILL.md`](skills/karpathy-guidelines/SKILL.md)
-- 实例说明：[`EXAMPLES.md`](EXAMPLES.md)
-- Cursor 规则：`.cursor/rules/karpathy-guidelines.mdc`
+LLM 编码 Agent 经常出现三类问题：
 
-## 兼容说明（非必需）
+- 做太多隐藏假设。
+- 把简单任务做复杂。
+- 在解决问题时改动无关代码。
 
-原有 `README`、`CLAUDE.md`、`CURSOR.md` 中的部分旧流程会保留为兼容内容。  
-如果你只在 Codex 使用，本文件已足够说明当前插件行为入口。
+## 技能原则
+
+`karpathy-guidelines` 技能包含四个原则：
+
+| 原则 | 作用 |
+|------|------|
+| Think Before Coding | 暴露假设、困惑、替代方案和权衡。 |
+| Simplicity First | 用最少必要代码解决当前请求。 |
+| Surgical Changes | 只修改任务需要的文件和代码行。 |
+| Goal-Driven Execution | 把模糊请求转成可验证的成功标准。 |
+
+## 在 Codex 中安装
+
+把本仓库作为本地 Codex 插件源使用。
+
+1. 将本仓库加入 Codex 插件源。
+2. Codex 读取 `.codex-plugin/plugin.json`。
+3. Codex 从 `skills/karpathy-guidelines/SKILL.md` 加载技能。
+
+插件名：
+
+```text
+andrej-karpathy-skills
+```
+
+技能名：
+
+```text
+karpathy-guidelines
+```
+
+## 仓库结构
+
+```text
+.codex-plugin/plugin.json
+AGENTS.md
+EXAMPLES.md
+README.md
+README.zh.md
+skills/karpathy-guidelines/SKILL.md
+```
 
 ## 授权
 

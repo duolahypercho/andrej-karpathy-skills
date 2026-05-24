@@ -6,8 +6,8 @@
     "name": "forrestchang",
     "url": "https://github.com/forrestchang"
   },
-  "homepage": "https://github.com/multica-ai/andrej-karpathy-skills",
-  "repository": "https://github.com/multica-ai/andrej-karpathy-skills",
+  "homepage": "https://github.com/duolahypercho/andrej-karpathy-skills",
+  "repository": "https://github.com/duolahypercho/andrej-karpathy-skills",
   "license": "MIT",
   "keywords": [
     "guidelines",
@@ -27,9 +27,9 @@
       "Interactive",
       "Write"
     ],
-    "websiteURL": "https://github.com/multica-ai/andrej-karpathy-skills",
-    "privacyPolicyURL": "https://github.com/multica-ai/andrej-karpathy-skills/blob/main/LICENSE",
-    "termsOfServiceURL": "https://github.com/multica-ai/andrej-karpathy-skills/blob/main/LICENSE",
+    "websiteURL": "https://github.com/duolahypercho/andrej-karpathy-skills",
+    "privacyPolicyURL": "https://github.com/duolahypercho/andrej-karpathy-skills/blob/main/LICENSE",
+    "termsOfServiceURL": "https://github.com/duolahypercho/andrej-karpathy-skills/blob/main/LICENSE",
     "defaultPrompt": [
       "Apply the Think Before Coding rule.",
       "Check for overcomplication and simplify.",
