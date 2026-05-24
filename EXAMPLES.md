@@ -1,166 +1,111 @@
 # Examples
 
-These examples show the expected Codex behavior when the `surgical-coding-discipline` skill is active.
+These examples show how the `surgical-coding-discipline` skill should change Codex behavior.
 
-## 1. Frame The Request
-
-User request:
-
-```text
-Add export support for customer records.
-```
-
-Weak response:
-
-```text
-I'll add CSV and JSON export, a scheduled background job, a new admin page,
-and a permission model for all customer fields.
-```
-
-Better Codex response:
-
-```text
-I can add this, but "export support" has a few product choices baked in.
-I'll assume you want an authenticated endpoint that exports the currently
-filtered customer list as CSV, using only fields already visible in the UI.
-If that is wrong, the risky parts are scope, sensitive fields, and file size.
-```
-
-Why this is better:
-
-- It names assumptions before code appears.
-- It narrows the first implementation.
-- It highlights the places where guessing could cause harm.
-
-## 2. Shrink The Patch
+## Example 1: Implementation Mode
 
 User request:
 
 ```text
-Add a discount calculation helper.
+Add CSV export to the customer table.
 ```
 
-Weak implementation:
+Better Codex ledger:
 
-```python
-class DiscountStrategy:
-    def apply(self, subtotal):
-        raise NotImplementedError
-
-
-class PercentageDiscount(DiscountStrategy):
-    def __init__(self, rate):
-        self.rate = rate
-
-    def apply(self, subtotal):
-        return subtotal * self.rate
-
-
-class DiscountEngine:
-    def __init__(self, strategy):
-        self.strategy = strategy
-
-    def calculate(self, subtotal):
-        return self.strategy.apply(subtotal)
+```text
+Outcome: customers visible in the current table can be exported as CSV.
+Boundary: customer table component, existing table data shape, one export button.
+Non-goals: background jobs, all-customer export, new permission model.
+Risk: exporting fields not already visible in the UI.
+Evidence: inspect generated CSV columns and run the table component test if present.
 ```
 
-Better implementation:
+Patch behavior:
 
-```python
-def calculate_discount(subtotal, rate):
-    return subtotal * rate
-```
+- Use the existing table data rather than querying a second source.
+- Export only displayed columns unless the user asks for more.
+- Keep styling and pagination changes out of the patch.
 
-Why this is better:
-
-- The request asked for a helper, not a pricing framework.
-- The simple version is easier to test and replace later.
-- No abstraction exists before a second real use case appears.
-
-## 3. Respect The Existing Surface
+## Example 2: Debugging Mode
 
 User request:
 
 ```text
-Fix upload failures when the filename contains spaces.
+The upload endpoint fails when filenames contain spaces.
 ```
 
-Weak patch:
+Better Codex ledger:
 
-```diff
-- def upload(path):
--     response = requests.post(URL, files={'file': open(path, 'rb')})
--     return response.status_code == 200
-+ def upload(path: str) -> bool:
-+     """Upload a file to the remote API."""
-+     with open(path, "rb") as handle:
-+         response = requests.post(
-+             URL,
-+             files={"file": (Path(path).name.replace(" ", "_"), handle)},
-+             timeout=30,
-+         )
-+     return response.ok
+```text
+Outcome: filenames with spaces upload successfully.
+Boundary: upload request construction and filename handling.
+Non-goals: storage backend rewrite, retry policy, timeout cleanup.
+Risk: changing how existing filenames are encoded.
+Evidence: add or run a focused filename-with-space case.
 ```
 
-Better patch:
+Patch behavior:
 
-```diff
-  def upload(path):
--     response = requests.post(URL, files={'file': open(path, 'rb')})
-+     filename = os.path.basename(path)
-+     response = requests.post(URL, files={'file': (filename, open(path, 'rb'))})
-      return response.status_code == 200
-```
+- Reproduce or describe the failing filename shape.
+- Fix the code closest to filename encoding.
+- Avoid rewriting request handling unless encoding is spread across the boundary.
 
-Why this is better:
-
-- It fixes the filename behavior without changing style, return semantics, or timeout policy.
-- It leaves type hints and resource-management cleanup for a separate request.
-- The diff maps directly to the reported bug.
-
-## 4. Prove The Outcome
+## Example 3: Refactor Mode
 
 User request:
 
 ```text
-Sorting breaks when two tasks have the same priority.
+Make this invoice calculation easier to read.
 ```
 
-Weak response:
+Better Codex ledger:
 
 ```text
-I changed the sort function to use priority and title. It should work now.
+Outcome: invoice calculation is easier to follow without behavior changes.
+Boundary: invoice calculation function and local helpers.
+Non-goals: tax rules, rounding policy, database schema.
+Risk: changing money behavior while renaming code.
+Evidence: existing invoice tests or before/after calculation spot checks.
 ```
 
-Better Codex flow:
+Patch behavior:
+
+- Extract only local concepts already present in the function.
+- Preserve rounding order and return shape.
+- Do not introduce a pricing abstraction unless multiple callers already need it.
+
+## Example 4: Review Mode
+
+User request:
 
 ```text
-Success criterion: two tasks with the same priority keep deterministic order.
-
-Check:
-- Add or identify a case with duplicate priorities.
-- Sort by priority first and created time second.
-- Run the focused task-sort test.
+Review this auth patch.
 ```
 
-Better patch shape:
+Better Codex ledger:
 
-```python
-def sort_tasks(tasks):
-    return sorted(tasks, key=lambda task: (task.priority, task.created_at))
+```text
+Outcome: identify correctness and security risks in the patch.
+Boundary: changed auth files and their immediate contracts.
+Non-goals: style preferences, unrelated auth cleanup.
+Risk: missing session invalidation or privilege regression.
+Evidence: file/line findings plus tests that should cover each risk.
 ```
 
-Why this is better:
+Review behavior:
 
-- The bug is translated into a concrete behavior.
-- The tie-breaker is explicit.
-- Verification is tied to the actual failure mode.
+- Lead with actionable findings.
+- Tie each finding to a concrete behavior.
+- Separate missing tests from proven bugs.
+- Say clearly when no issues are found.
 
-## Quick Diagnostic
+## Mini Template
 
-Before accepting a patch, ask:
+Use this when a task starts to sprawl:
 
-- Did Codex state the frame of the request?
-- Is the implementation smaller than the problem?
-- Are unrelated files untouched?
-- Is there a meaningful success check?
+```text
+Core change:
+Out of scope:
+Evidence I can collect:
+Evidence I cannot collect:
+```

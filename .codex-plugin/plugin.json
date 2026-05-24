@@ -1,7 +1,7 @@
 {
   "name": "andrej-karpathy-skills",
   "version": "1.0.0",
-  "description": "A Codex-native surgical coding discipline for smaller diffs, clearer assumptions, and verifiable outcomes.",
+  "description": "A Codex-native change-budget workflow for scoped edits, local-contract preservation, and evidence-backed coding work.",
   "author": {
     "name": "Duola",
     "url": "https://github.com/duolahypercho"
@@ -20,8 +20,8 @@
   "skills": "./skills/",
   "interface": {
     "displayName": "Surgical Coding Discipline",
-    "shortDescription": "Keep Codex coding changes deliberate, narrow, and verifiable.",
-    "longDescription": "A Codex skill that teaches agents to frame requests, shrink patches, respect existing code surfaces, and prove outcomes with focused checks.",
+    "shortDescription": "Use a change budget and evidence ledger for safer Codex coding work.",
+    "longDescription": "A Codex skill that gives agents a distinct change-budget protocol for implementation, debugging, refactoring, and review tasks, with explicit boundaries, non-goals, risks, and evidence.",
     "developerName": "Duola",
     "category": "Productivity",
     "capabilities": [
@@ -32,10 +32,10 @@
     "privacyPolicyURL": "https://github.com/duolahypercho/andrej-karpathy-skills/blob/main/LICENSE",
     "termsOfServiceURL": "https://github.com/duolahypercho/andrej-karpathy-skills/blob/main/LICENSE",
     "defaultPrompt": [
-      "Frame this coding request before editing.",
-      "Simplify this implementation without widening scope.",
-      "Review this patch for unrelated edits and weak verification.",
-      "Define success criteria for this bug fix."
+      "Create a change budget for this coding request.",
+      "Use implementation mode for this feature.",
+      "Use debugging mode for this failure.",
+      "Review this patch with an evidence ledger."
     ],
     "brandColor": "#0F766E"
   }

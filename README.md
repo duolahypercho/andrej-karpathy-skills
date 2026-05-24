@@ -1,6 +1,6 @@
 # Surgical Coding Discipline for Codex
 
-A Codex-native skill package for keeping coding agents deliberate, small-scoped, and verification-oriented.
+A Codex-native skill package for giving coding agents a change budget, a boundary, and an evidence ledger.
 
 - `AGENTS.md` is the repository-level operating context.
 - `.codex-plugin/plugin.json` is the plugin manifest.
@@ -11,18 +11,30 @@ English | [Simplified Chinese](./README.zh.md)
 
 ## Why This Exists
 
-Coding agents are strongest when the goal is concrete and the edit surface is narrow. They get expensive when they silently choose an interpretation, expand the task, add abstractions too early, or rewrite code they did not need to touch.
+Coding agents are strongest when the goal is concrete and the edit surface is bounded. They get expensive when they silently choose an interpretation, expand the task, add abstractions too early, or report confidence without evidence.
 
-This skill gives Codex a compact operating discipline for that moment.
+This skill gives Codex a compact operating protocol for that moment.
 
-## The Four Habits
+## The Core Workflow
 
-| Habit | What It Prevents |
-|-------|------------------|
-| State the frame | Silent assumptions and hidden confusion |
-| Bias to the smallest useful patch | Premature architecture and option-heavy APIs |
-| Touch only the task surface | Drive-by refactors and style churn |
-| Prove the outcome | "Looks right" changes without a success check |
+Every non-trivial task gets a lightweight ledger:
+
+```text
+Outcome:
+Boundary:
+Non-goals:
+Risk:
+Evidence:
+```
+
+The skill then switches behavior by task mode:
+
+| Mode | Use For |
+|------|---------|
+| Implementation | Adding behavior without inventing a framework |
+| Debugging | Fixing a failure shape near the broken contract |
+| Refactor | Moving structure while preserving behavior |
+| Review | Reporting risks with concrete evidence |
 
 ## Install In Codex
 
@@ -64,8 +76,8 @@ Use the skill when Codex is asked to:
 - fix a bug,
 - refactor a module,
 - review a patch,
-- reduce implementation complexity,
-- define success criteria before making a risky change.
+- separate core work from optional follow-up cleanup,
+- report what evidence proves the change.
 
 For tiny edits, Codex should use judgment. The point is not ceremony; the point is avoiding costly, avoidable mistakes.
 

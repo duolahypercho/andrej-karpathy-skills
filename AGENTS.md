@@ -11,12 +11,12 @@ This repository is a Codex-native plugin package. Treat it as a reusable skill, 
 
 ## Package Intent
 
-The package teaches Codex a surgical coding discipline:
+The package teaches Codex a change-budget workflow:
 
-- frame the request before changing code,
-- prefer the smallest useful implementation,
-- keep diffs tied to the user request,
-- verify outcomes against explicit success criteria.
+- define `Outcome`, `Boundary`, `Non-goals`, `Risk`, and `Evidence`,
+- choose the right mode for implementation, debugging, refactoring, or review,
+- separate core work from optional expansion,
+- report only the evidence actually gathered.
 
 ## Maintenance Rules
 

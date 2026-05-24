@@ -1,33 +1,34 @@
-# Codex 外科式编码纪律
+# Codex 变更预算纪律
 
-这是一个 Codex 原生技能包，用来让编码 Agent 更谨慎、更小步、更可验证。
+这是一个 Codex 原生 skill，用来让编码 Agent 在改代码前先明确边界、风险和证据。
 
 - `AGENTS.md` 是仓库级 Codex 操作上下文。
 - `.codex-plugin/plugin.json` 是插件清单。
-- `skills/surgical-coding-discipline/SKILL.md` 是可复用技能。
+- `skills/surgical-coding-discipline/SKILL.md` 是可复用 skill。
 - `EXAMPLES.md` 是 Codex 风格示例。
 
 [English](./README.md) | 简体中文
 
-## 为什么需要它
+## 核心工作流
 
-编码 Agent 最容易犯的错误不是不会写代码，而是：
+每个非平凡任务都先形成一个轻量 ledger：
 
-- 没有说清楚假设就开始改。
-- 把小需求做成大架构。
-- 顺手修改了无关代码。
-- 没有定义真正能证明结果的检查方式。
+```text
+Outcome:
+Boundary:
+Non-goals:
+Risk:
+Evidence:
+```
 
-这个 skill 的目标是给 Codex 一个简单的工作纪律：先框定问题，再缩小改动，最后证明结果。
+然后按任务类型切换模式：
 
-## 四个习惯
-
-| 习惯 | 避免的问题 |
-|------|------------|
-| 先框定请求 | 隐藏假设和隐藏困惑 |
-| 偏向最小可用改动 | 过早抽象和复杂 API |
-| 只碰任务表面 | 顺手重构和格式漂移 |
-| 证明结果 | 只凭感觉判断改好了 |
+| 模式 | 用途 |
+|------|------|
+| Implementation | 添加行为，但不顺手发明框架。 |
+| Debugging | 围绕失败形状修复最近的契约。 |
+| Refactor | 改结构，同时保持行为不变。 |
+| Review | 用具体证据报告风险。 |
 
 ## 在 Codex 中安装
 
@@ -43,7 +44,7 @@
 andrej-karpathy-skills
 ```
 
-技能名：
+Skill 名：
 
 ```text
 surgical-coding-discipline

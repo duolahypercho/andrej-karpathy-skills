@@ -1,93 +1,143 @@
 ---
 name: surgical-coding-discipline
-description: Use when Codex is writing, reviewing, debugging, or refactoring code and should avoid hidden assumptions, speculative abstractions, unrelated edits, and weak success criteria.
-license: MIT
+description: Apply a Codex-specific change-budget workflow for implementation, debugging, refactoring, and review tasks. Use when Codex should translate a user request into scoped code changes, preserve local contracts, avoid speculative expansion, and report evidence for what changed.
 ---
 
 # Surgical Coding Discipline
 
-Use this skill to keep Codex deliberate, narrow, and outcome-oriented during coding work.
+Treat every coding task as a controlled change with a budget, a boundary, and evidence.
 
-The core idea is simple: before changing code, understand the requested outcome; while changing code, keep the patch smaller than the problem; after changing code, prove the result with the most relevant check available.
+This skill is not a style guide. It is a decision protocol for keeping Codex from turning a narrow request into a wandering rewrite.
 
-## Trigger Conditions
+## The Change Budget
 
-Use this skill when the user asks Codex to:
+Before editing, establish a small working ledger:
 
-- implement a feature,
-- fix a bug,
-- refactor code,
-- review code,
-- simplify an implementation,
-- define a plan for non-trivial engineering work.
+```text
+Outcome:
+Boundary:
+Non-goals:
+Risk:
+Evidence:
+```
 
-For obvious one-line edits, apply the spirit without adding ceremony.
+Use it lightly. For small tasks, keep it in your head. For risky or multi-file tasks, say the ledger out loud before changing code.
 
-## Operating Loop
+- `Outcome`: the user-visible behavior or code property that must become true.
+- `Boundary`: the files, modules, APIs, or ownership areas likely involved.
+- `Non-goals`: tempting cleanup that should stay out of the patch.
+- `Risk`: what could break if the assumption is wrong.
+- `Evidence`: the narrowest command, test, inspection, or artifact that proves the outcome.
 
-### 1. Frame The Request
+If any ledger line is unknown and guessing would create real risk, ask. If the risk is low, proceed and state the assumption.
 
-Before editing, identify:
+## Modes
 
-- the concrete outcome the user wants,
-- the files or modules likely involved,
-- assumptions that could change the implementation,
-- tradeoffs that would matter to a maintainer.
+Choose the mode that matches the task. Do not use the same behavior for every request.
 
-Ask only when a wrong assumption would create meaningful risk. Otherwise, state the assumption and move.
+### Implementation Mode
 
-### 2. Shrink The Patch
+Use when adding behavior.
 
-Prefer the smallest implementation that satisfies the request.
+- Start from the call site or user path before adding helpers.
+- Fit the smallest current requirement before designing the next one.
+- Prefer local code over new shared abstractions until at least two real callers exist.
+- Add public API only when the user request needs a public contract.
 
-- Do not add new features as a side effect.
-- Do not add configuration, hooks, strategies, factories, or adapters unless the current code already needs them.
-- Do not introduce a new dependency for logic the repo can already express simply.
-- Do not widen public APIs unless the request requires it.
+Done means the requested behavior exists and the evidence path can show it.
 
-If the first design feels clever, try to make it boring.
+### Debugging Mode
 
-### 3. Respect The Existing Surface
+Use when fixing a reported failure.
 
-When editing an existing codebase:
+- Name the failure shape first: input, observed result, expected result.
+- Change the code nearest to the failing contract.
+- Avoid broad rewrites unless the bug is caused by a broad design assumption.
+- Preserve unrelated behavior even if it looks imperfect.
 
-- Match local naming, formatting, and error-handling patterns.
-- Leave unrelated comments, formatting, and adjacent code alone.
-- Remove only the dead code introduced by your own change.
-- Mention unrelated issues separately instead of folding them into the patch.
+Done means the failing shape is addressed and the fix does not rely on accidental behavior.
 
-Every changed line should answer: "Why did this request require me?"
+### Refactor Mode
 
-### 4. Prove The Outcome
+Use when changing structure without changing behavior.
 
-Convert the request into a success check:
+- Identify the preserved contract before moving code.
+- Move in the smallest reversible step.
+- Keep names and layout recognizable unless clarity requires otherwise.
+- Do not mix refactor work with feature work unless the feature cannot land safely without it.
 
-- Bug fix: reproduce or describe the failing case, then show it is fixed.
-- Feature: identify the expected behavior and the check that demonstrates it.
-- Refactor: preserve behavior and use existing tests or focused inspection.
-- Review: surface risks with file references and severity.
+Done means behavior is preserved and the structure is easier to maintain for the requested reason.
 
-Run the narrowest meaningful verification when the environment allows it. If verification is skipped, say why.
+### Review Mode
 
-## Pushback Rules
+Use when evaluating code.
 
-Push back gently when:
+- Lead with correctness, regression, security, data-loss, and maintenance risks.
+- Tie each finding to a concrete line, behavior, or missing check.
+- Avoid preference-only feedback unless the user asks for style review.
+- Say when no actionable issues were found.
 
-- the user asks for a broad rewrite but the goal only needs a small fix,
-- the requested abstraction has only one caller,
-- the implementation would hide important tradeoffs,
-- the success criteria are too vague for high-risk work,
-- the change would touch unrelated ownership boundaries.
+Done means the user can decide what to fix without reading your mind.
 
-Pushback should offer a smaller path, not just say no.
+## Expansion Controls
 
-## Response Shape
+Stop and reconsider when you are about to:
 
-For non-trivial work, Codex should usually communicate:
+- create a framework for one use case,
+- add options the user did not request,
+- edit files outside the stated boundary,
+- rename things just because they read better,
+- change formatting in untouched code,
+- replace a working pattern with a preferred pattern,
+- make verification broader than the change requires.
 
-1. What it assumes.
-2. What it changed.
-3. How it verified the result.
-4. Any remaining risk.
+When expansion seems useful, split it from the requested patch:
 
-Keep this concise. The discipline is for better engineering, not longer replies.
+```text
+Core change:
+Optional follow-up:
+Why separate:
+```
+
+## Evidence Ledger
+
+At the end, report evidence in proportion to risk.
+
+Use one of these evidence types:
+
+- `Tested`: command or scenario was run.
+- `Inspected`: code path or artifact was checked directly.
+- `Not run`: verification was skipped, with the reason.
+- `Blocked`: verification requires missing access, dependency, data, or user decision.
+
+Do not imply stronger evidence than you have. A passing formatter is not proof that a bug is fixed. A successful build is not proof that the user workflow works.
+
+## Communication Contract
+
+Be concise, but make the state of the work legible.
+
+For ordinary code edits, answer with:
+
+```text
+Changed:
+Evidence:
+Risk:
+```
+
+For review tasks, answer with:
+
+```text
+Findings:
+Open questions:
+Residual risk:
+```
+
+For blocked tasks, answer with:
+
+```text
+Blocked by:
+What is already done:
+Exact next input needed:
+```
+
+The user should be able to see what changed, why it stayed bounded, and what proof exists without digging through the diff.
