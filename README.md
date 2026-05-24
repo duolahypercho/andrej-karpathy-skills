@@ -1,42 +1,36 @@
-# Karpathy-Inspired Codex Skill
+# Surgical Coding Discipline for Codex
 
-Behavioral guidelines for Codex coding agents, derived from Andrej Karpathy's observations on common LLM coding pitfalls.
+A Codex-native skill package for keeping coding agents deliberate, small-scoped, and verification-oriented.
 
-This repository is Codex-native. It uses:
-
-- `.codex-plugin/plugin.json` for the Codex plugin manifest.
-- `AGENTS.md` for repository-level Codex operating context.
-- `skills/karpathy-guidelines/SKILL.md` for reusable skill instructions.
-- `EXAMPLES.md` for practical examples of the four principles.
+- `AGENTS.md` is the repository-level operating context.
+- `.codex-plugin/plugin.json` is the plugin manifest.
+- `skills/surgical-coding-discipline/SKILL.md` is the reusable skill.
+- `EXAMPLES.md` shows original Codex-style scenarios.
 
 English | [Simplified Chinese](./README.zh.md)
 
-## The Problem
+## Why This Exists
 
-LLM coding agents often make three expensive mistakes:
+Coding agents are strongest when the goal is concrete and the edit surface is narrow. They get expensive when they silently choose an interpretation, expand the task, add abstractions too early, or rewrite code they did not need to touch.
 
-- They assume too much and hide uncertainty.
-- They overcomplicate simple tasks.
-- They change unrelated code while trying to help.
+This skill gives Codex a compact operating discipline for that moment.
 
-## The Skill
+## The Four Habits
 
-The `karpathy-guidelines` skill teaches four operating principles:
-
-| Principle | Purpose |
-|-----------|---------|
-| Think Before Coding | Surface assumptions, confusion, alternatives, and tradeoffs. |
-| Simplicity First | Solve the requested problem with the minimum necessary code. |
-| Surgical Changes | Touch only the lines and files required by the task. |
-| Goal-Driven Execution | Convert vague requests into verifiable success criteria. |
+| Habit | What It Prevents |
+|-------|------------------|
+| State the frame | Silent assumptions and hidden confusion |
+| Bias to the smallest useful patch | Premature architecture and option-heavy APIs |
+| Touch only the task surface | Drive-by refactors and style churn |
+| Prove the outcome | "Looks right" changes without a success check |
 
 ## Install In Codex
 
 Use this repository as a local Codex plugin source.
 
-1. Add this repository to your Codex plugin sources.
+1. Add the repository to your Codex plugin sources.
 2. Codex reads `.codex-plugin/plugin.json`.
-3. Codex loads the skill from `skills/karpathy-guidelines/SKILL.md`.
+3. Codex loads `skills/surgical-coding-discipline/SKILL.md`.
 
 Plugin name:
 
@@ -47,7 +41,7 @@ andrej-karpathy-skills
 Skill name:
 
 ```text
-karpathy-guidelines
+surgical-coding-discipline
 ```
 
 ## Repository Layout
@@ -56,19 +50,28 @@ karpathy-guidelines
 .codex-plugin/plugin.json
 AGENTS.md
 EXAMPLES.md
+LICENSE
 README.md
 README.zh.md
-skills/karpathy-guidelines/SKILL.md
+skills/surgical-coding-discipline/SKILL.md
 ```
 
-## When To Use
+## When To Use It
 
-Use this skill when Codex is writing, reviewing, or refactoring code and the task benefits from:
+Use the skill when Codex is asked to:
 
-- fewer hidden assumptions,
-- less overengineering,
-- smaller diffs,
-- clearer success criteria.
+- write new code,
+- fix a bug,
+- refactor a module,
+- review a patch,
+- reduce implementation complexity,
+- define success criteria before making a risky change.
+
+For tiny edits, Codex should use judgment. The point is not ceremony; the point is avoiding costly, avoidable mistakes.
+
+## Attribution
+
+This package is inspired by Andrej Karpathy's public comments on LLM coding behavior and by earlier community attempts to turn those comments into reusable agent guidance. This repository is a Codex-native rewrite with its own package structure, docs, examples, and operating language.
 
 ## License
 

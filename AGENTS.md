@@ -1,25 +1,37 @@
 # AGENTS.md
 
-This repository is a Codex-first skill package.
+This repository is a Codex-native plugin package. Treat it as a reusable skill, not as a generic prompt dump.
 
-## Codex Entry Points
+## Source Of Truth
 
 - Plugin manifest: `.codex-plugin/plugin.json`
-- Skill instructions: `skills/karpathy-guidelines/SKILL.md`
-- Examples: `EXAMPLES.md`
+- Skill behavior: `skills/surgical-coding-discipline/SKILL.md`
+- Usage examples: `EXAMPLES.md`
+- Public overview: `README.md`
 
-## Agent Behavior
+## Package Intent
 
-Use the Karpathy guidelines whenever writing, reviewing, or refactoring code:
+The package teaches Codex a surgical coding discipline:
 
-- Think before coding: surface assumptions, confusion, alternatives, and tradeoffs before implementation.
-- Simplicity first: use the minimum code that solves the requested problem.
-- Surgical changes: touch only what the task requires and clean up only changes introduced by the task.
-- Goal-driven execution: define success criteria and verify the work against them when appropriate.
+- frame the request before changing code,
+- prefer the smallest useful implementation,
+- keep diffs tied to the user request,
+- verify outcomes against explicit success criteria.
 
-## Repository Rules
+## Maintenance Rules
 
-- Keep this repo Codex-native.
+- Keep this repository Codex-native.
 - Do not add instruction files or plugin metadata for other agent runtimes.
-- Keep `SKILL.md` as the source of truth for reusable skill behavior.
-- Keep `README.md` focused on Codex installation and usage.
+- Keep `SKILL.md` as the behavioral source of truth.
+- Keep examples concrete and code-adjacent, not motivational.
+- Keep attribution in `README.md`, but do not copy upstream wording wholesale.
+- Avoid non-ASCII symbols in English docs unless the file already requires them.
+
+## Quality Bar
+
+Before publishing a change, confirm:
+
+- The file list still matches the Codex package shape.
+- The manifest points to this repository.
+- README, AGENTS, and SKILL describe the same behavior.
+- Examples use clean plain text and do not depend on another runtime.
