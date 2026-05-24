@@ -5,6 +5,7 @@ A Codex-native skill package for giving coding agents a change budget, a boundar
 - `AGENTS.md` is the repository-level operating context.
 - `.codex-plugin/plugin.json` is the plugin manifest.
 - `skills/change-budget/SKILL.md` is the reusable skill.
+- `instruction.md` is the copy-paste version for Codex Custom Instructions.
 - `EXAMPLES.md` shows original Codex-style scenarios.
 
 English | [Simplified Chinese](./README.zh.md)
@@ -56,12 +57,23 @@ Skill name:
 change-budget
 ```
 
+## Use Without Installing
+
+If someone does not want to install the plugin or add an `AGENTS.md`, they can use the standalone Custom Instructions version:
+
+1. Open `instruction.md`.
+2. Copy the block under "Paste the block below".
+3. Paste it into Codex Settings -> Custom Instructions.
+
+That version is self-contained, so Codex can apply Change Budget immediately without reading any repo files.
+
 ## Repository Layout
 
 ```text
 .codex-plugin/plugin.json
 AGENTS.md
 EXAMPLES.md
+instruction.md
 LICENSE
 README.md
 README.zh.md

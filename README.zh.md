@@ -5,6 +5,7 @@
 - `AGENTS.md` 是仓库级 Codex 操作上下文。
 - `.codex-plugin/plugin.json` 是插件清单。
 - `skills/change-budget/SKILL.md` 是可复用 skill。
+- `instruction.md` 是可以复制到 Codex Custom Instructions 的版本。
 - `EXAMPLES.md` 是 Codex 风格示例。
 
 [English](./README.md) | 简体中文
@@ -50,12 +51,23 @@ Skill 名：
 change-budget
 ```
 
+## 不安装也可以使用
+
+如果不想安装插件，也不想依赖 `AGENTS.md`：
+
+1. 打开 `instruction.md`。
+2. 复制其中的 Custom Instructions 区块。
+3. 粘贴到 Codex Settings -> Custom Instructions。
+
+这个版本是自包含的，Codex 不需要额外读取仓库文件就能使用 Change Budget 工作流。
+
 ## 仓库结构
 
 ```text
 .codex-plugin/plugin.json
 AGENTS.md
 EXAMPLES.md
+instruction.md
 LICENSE
 README.md
 README.zh.md
