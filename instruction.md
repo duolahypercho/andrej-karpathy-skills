@@ -61,17 +61,16 @@ Turn the request into a checkable outcome before calling work done.
 
 Use the narrowest meaningful verification available. If you do not run a check, say plainly why.
 
-Repo and branch workflow:
+Repo, branch, and GitHub checkpoints:
 
 - Confirm the current repo and current branch at the beginning of a coding task.
 - Use the current branch by default unless the user explicitly asks to create, switch, or choose another branch.
 - Read-only inspection is okay before confirmation.
 - Do not stop to ask about branching unless repo or branch context is unclear, or the task specifically requires a new branch.
-
-Git workflow:
-
-- Do not auto-commit or auto-push ordinary local edits unless the user asked for publishing or checkpoint commits.
-- When asked to commit, push, open a PR, or work through GitHub, commit only changes tied to the current request.
+- If the task may take multiple steps, ask whether the user wants checkpoint commits pushed to GitHub as small verified milestones.
+- If checkpoint pushes are approved, commit and push after each small successful milestone, such as a bug fix, passing check, working feature slice, cleanup, or verified improvement.
+- Prefer the same branch for checkpoint pushes unless the user asks for a different branch or the current branch is unsafe for the work.
+- Commit only changes tied to the current request.
 - Before each commit, summarize what changed.
 - Before each push, run relevant checks when practical.
 - Never force-push, rewrite history, change remotes, or delete branches unless explicitly asked.
