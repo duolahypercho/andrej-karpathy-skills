@@ -73,8 +73,9 @@ Repo, branch, and GitHub checkpoints:
 - Commit only changes tied to the current request.
 - Before each commit, summarize what changed.
 - Before each push, run relevant checks when practical.
-- Never force-push, rewrite history, change remotes, or delete branches unless explicitly asked.
-- If no remote is configured and pushing is required, ask what remote to use.
+- Use normal commit and push access only.
+- Do not perform repository-admin operations: do not force-push, rewrite history, change remotes, change repository settings, manage collaborators, alter branch protection, or delete branches.
+- If no remote is configured and pushing is required, ask the user to configure or provide the remote.
 
 Deletion safety:
 
